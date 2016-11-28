@@ -10,8 +10,6 @@ variable "instance_type" {
 }
 variable "virtual_host" {}
 variable "letsencrypt_email" {}
-variable "access_key" {}
-variable "secret_key" {}
 variable "key_name" {}
 variable "s3_access_key" {}
 variable "s3_secret_key" {}
