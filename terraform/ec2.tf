@@ -1,5 +1,14 @@
+data "aws_ami" "ecs_optimized_ami" {
+  most_recent = true
+  filter {
+    name = "name"
+    values = ["amzn-ami-2016.09.b-amazon-ecs-optimized"]
+  }
+  owners = ["amazon"]
+}
+
 resource "aws_instance" "host" {
-  ami = "${lookup(var.amis, var.region)}"
+  ami = "${data.aws_ami.ecs_optimized_ami.id}"
   instance_type = "${var.instance_type}"
   key_name = "${var.key_name}"
   vpc_security_group_ids = [

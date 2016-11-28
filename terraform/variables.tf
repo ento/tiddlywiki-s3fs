@@ -33,9 +33,11 @@ variable "asg_max_size" {
   description = "Maximum size and initial Desired Capacity of ECS Auto Scaling Group."
   default = 1
 }
+
 variable "docker_image" {
-  default = "ento/tiddlywiki-s3fs:0.1.0"
+  default = "ento/tiddlywiki-s3fs:tw5.1.13"
 }
+
 variable "amis" {
   default = {
     us-east-1 = "ami-2b3b6041"
