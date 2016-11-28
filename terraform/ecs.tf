@@ -53,7 +53,7 @@ resource "aws_ecs_cluster" "main" {
   name = "${var.name}-cluster"
 }
 
-resource "template_file" "container_definitions" {
+data "template_file" "container_definitions" {
   template = "${file("container-definitions.json")}"
   vars {
     name = "${var.name}"
@@ -71,7 +71,7 @@ resource "template_file" "container_definitions" {
 
 resource "aws_ecs_task_definition" "main" {
   family = "${var.name}"
-  container_definitions = "${template_file.container_definitions.rendered}"
+  container_definitions = "${data.template_file.container_definitions.rendered}"
   volume {
     name = "certs"
     host_path = "/etc/certs/"
