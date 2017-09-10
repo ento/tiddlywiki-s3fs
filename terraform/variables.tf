@@ -35,7 +35,7 @@ variable "asg_max_size" {
 }
 
 variable "docker_image" {
-  default = "ento/tiddlywiki-s3fs:tw5.1.13"
+  default = "ento/tiddlywiki-s3fs:tw5.1.14"
 }
 
 variable "amis" {
