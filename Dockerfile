@@ -1,7 +1,7 @@
 FROM node:5.7-slim
 
-ENV TIDDLYWIKI_VERSION 5.1.13
-ENV S3FS_VERSION 1.79
+ENV TIDDLYWIKI_VERSION 5.1.14
+ENV S3FS_VERSION 1.82
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
   build-essential \
