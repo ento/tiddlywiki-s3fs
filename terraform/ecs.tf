@@ -46,7 +46,7 @@ EOF
 
 resource "aws_iam_instance_profile" "ecs_iam_profile" {
   name = "${var.name}.ecs-instance-profile"
-  roles = ["${aws_iam_role.ecs_instance.name}"]
+  role = "${aws_iam_role.ecs_instance.name}"
 }
 
 resource "aws_ecs_cluster" "main" {
