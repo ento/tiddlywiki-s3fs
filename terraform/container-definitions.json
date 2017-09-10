@@ -27,6 +27,9 @@
     "name": "nginx",
     "essential": true,
     "image": "nginx",
+    "dockerLabels": {
+      "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy": ""
+    },
     "memory": 128,
     "volumesFrom": [
       {
@@ -50,6 +53,9 @@
     "name": "nginx-gen",
     "essential": true,
     "image": "ento/docker-nginx-gen-with-tpl",
+    "dockerLabels": {
+      "com.github.jrcs.letsencrypt_nginx_proxy_companion.docker_gen": ""
+    },
     "memory": 64,
     "links": ["nginx"],
     "volumesFrom": [
@@ -77,13 +83,11 @@
   {
     "name": "nginx-letsencrypt",
     "essential": true,
-    "image": "ento/letsencrypt-nginx-proxy-companion:support-linked-nginx-gen-container",
+    "image": "jrcs/letsencrypt-nginx-proxy-companion:latest",
     "memory": 64,
     "environment": [
-      { "name": "NGINX_DOCKER_GEN_LINKED_CONTAINER_ENVVAR", "value": "NGINX_GEN_NAME" },
       { "name": "DEBUG", "value": "true" }
     ],
-    "links": ["nginx-gen"],
     "volumesFrom": [
       {
         "sourceContainer": "nginx",
